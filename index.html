@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b18">
+  <title>ZEROXSMP — Yeni Nesil Survival SMP</title>
+  <meta name="description" content="ZeroxSMP: ekonomi, spawner, görevler, RTP, crystal PvP ve daha fazlası. Launcher'ı indir, sunucuya katıl.">
+  <link rel="stylesheet" href="assets/style.css?v=147f">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+</head>
+<body class="landing">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="aurora" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="" width="38" height="38">
+      <span>ZEROX<em>SMP</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#ozellikler">Özellikler</a>
+      <a href="#gorevler">Görevler</a>
+      <a href="#magaza">Mağaza</a>
+      <a href="#indir">İndir</a>
+      <a href="#android">Android</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="ip-chip" id="ipChip" type="button" title="IP'yi kopyala">
+        <span class="dot"></span> <span id="ipText">oyna.zerox.com</span>
+      </button>
+      <a class="btn btn-ghost" href="panel.html">Giriş Yap</a>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Menü">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="anasayfa">
+      <div class="hero-copy reveal">
+        <span class="eyebrow"><span class="pulse"></span> 7/24 AKTİF • TÜRKİYE</span>
+        <h1>ZEROX<span>SMP</span></h1>
+        <p class="hero-lead">Ekonomi, spawner, günlük görevler, RTP ve crystal PvP. Kendi dünyanı kur, sınırları zorla.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#indir">Launcher'ı İndir <span>↓</span></a>
+          <a class="btn btn-secondary" href="panel.html">Siteye Giriş</a>
+        </div>
+        <div class="hero-meta">
+          <div><strong id="onlineCount">—</strong><span>çevrimiçi</span></div>
+          <div><strong id="tpsCount">—</strong><span>TPS</span></div>
+          <div><strong>1.4.7</strong><span>launcher</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <div class="hero-card-head">
+          <div class="server-favicon">Z</div>
+          <div>
+            <strong>ZeroxSMP</strong>
+            <span class="status-line"><span class="dot" id="statusDot"></span> <span id="statusText">Sunucu durumu kontrol ediliyor…</span></span>
+          </div>
+        </div>
+        <div class="hero-card-body">
+          <div class="stat-row"><span>IP</span><button class="copy-value" id="copyIp" type="button">oyna.zerox.com <span>⧉</span></button></div>
+          <div class="stat-row"><span>Sürüm</span><b>Paper 26.3</b></div>
+          <div class="stat-row"><span>Mod</span><b>Survival SMP</b></div>
+          <div class="stat-row"><span>Görev ödülü</span><b class="gold">Günlük 80 coin</b></div>
+        </div>
+        <div class="hero-card-foot">
+          <span class="tag">Ekonomi</span><span class="tag">Spawner</span><span class="tag">RTP</span><span class="tag">PvP</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>SPAWNER</span><span>•</span><span>EKONOMİ</span><span>•</span><span>GÖREVLER</span><span>•</span><span>RTP</span><span>•</span><span>CRYSTAL PVP</span><span>•</span><span>MEZAT</span><span>•</span><span>KASA</span><span>•</span>
+        <span>SPAWNER</span><span>•</span><span>EKONOMİ</span><span>•</span><span>GÖREVLER</span><span>•</span><span>RTP</span><span>•</span><span>CRYSTAL PVP</span><span>•</span><span>MEZAT</span><span>•</span><span>KASA</span><span>•</span>
+      </div>
+    </section>
+
+    <section class="section" id="ozellikler">
+      <div class="section-head reveal">
+        <span class="kicker">NELER VAR?</span>
+        <h2>Sunucunun <span class="grad">tüm gücü</span></h2>
+        <p>Sunucuya girdiğin an başlayan bir ekonomi, sürekli büyüyen bir spawner ağı ve her gün yenilenen görevler.</p>
+      </div>
+      <div class="grid features">
+        <article class="card reveal">
+          <div class="icon">⚙</div>
+          <h3>Spawner Sistemi</h3>
+          <p>Aynı tür spawnerları birleştir, 365 birime kadar yükselt. Dilediğin kadar spawner kur — toplam limit yok.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">₺</div>
+          <h3>Ekonomi & Mezat</h3>
+          <p>Kaz, sat, biriktir. Mezat evinde eşya alıp sat, bakiyeni siteye giriş yaparak TL olarak gör.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">✦</div>
+          <h3>Günlük Görevler</h3>
+          <p>Her gün 3 yeni görev. Elmas topla, zombi avla, eşya sat. Kodunu siteye gir, coin kazan.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">◎</div>
+          <h3>RTP & Keşif</h3>
+          <p>Overworld, Nether ve End'de güvenli rastgele ışınlanma. Ping sıçraması olmadan keşfe çık.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">⚔</div>
+          <h3>Crystal PvP</h3>
+          <p>Özel arena, crystal meta ve kill serisi. Rankını yükselt, liderlik tablosunda yerini al.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">🎁</div>
+          <h3>Kasalar & Ödüller</h3>
+          <p>Bronz, Elmas ve Efsane kasalar. Anahtar kazan, nadir eşyalar ve büyük para ödülleri aç.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split" id="gorevler">
+      <div class="split-copy reveal">
+        <span class="kicker">HER GÜN YENİ</span>
+        <h2>Görev yap, <span class="grad-gold">coin kazan</span></h2>
+        <p>Sunucuda <code>/gorevler</code> yaz veya spawn'daki görev NPC'sine tıkla. Üç görevi tamamla, sohbette çıkan kodu siteye gir.</p>
+        <ul class="checks">
+          <li>Günde en fazla <b>80 coin</b></li>
+          <li>Görevler her gün otomatik yenilenir</li>
+          <li>Kodlar tek kullanımlık ve hesabına özel</li>
+          <li>Coin'leri sitede TL paketine çevir</li>
+        </ul>
+        <a class="btn btn-primary" href="panel.html#redeem">Kodumu Gir</a>
+      </div>
+      <div class="quest-stack reveal">
+        <article class="quest-card">
+          <span class="quest-tier">ZOR</span>
+          <h3>64 Elmas Topla</h3>
+          <div class="bar"><i style="width:72%"></i></div>
+          <div class="quest-foot"><span>46 / 64</span><b>+50 coin</b></div>
+        </article>
+        <article class="quest-card">
+          <span class="quest-tier mid">ORTA</span>
+          <h3>30 Zombi Öldür</h3>
+          <div class="bar"><i style="width:40%"></i></div>
+          <div class="quest-foot"><span>12 / 30</span><b>+20 coin</b></div>
+        </article>
+        <article class="quest-card done">
+          <span class="quest-tier easy">KOLAY</span>
+          <h3>512 Taş Kaz</h3>
+          <div class="bar"><i style="width:100%"></i></div>
+          <div class="quest-foot"><span>Tamamlandı</span><b>+10 coin</b></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="magaza">
+      <div class="section-head reveal">
+        <span class="kicker">SİTE MAĞAZASI</span>
+        <h2>Coin'ini <span class="grad">TL'ye çevir</span></h2>
+        <p>Görevlerden kazandığın coin'lerle oyun içi para paketleri al. Ödeme sonrası kodunu kopyala, sunucuda <code>/code &lt;kod&gt;</code> yaz.</p>
+      </div>
+      <div class="grid shop-grid">
+        <article class="shop-card reveal">
+          <span class="shop-badge">BAŞLANGIÇ</span>
+          <h3>10.000 TL</h3>
+          <div class="price"><b>30</b> coin</div>
+          <ul><li>Anında kod</li><li>Hesabına özel</li><li>Tek kullanımlık</li></ul>
+          <a class="btn btn-secondary" href="panel.html#shop">Satın Al</a>
+        </article>
+        <article class="shop-card featured reveal">
+          <span class="shop-badge gold">POPÜLER</span>
+          <h3>30.000 TL</h3>
+          <div class="price"><b>50</b> coin</div>
+          <ul><li>Anında kod</li><li>Hesabına özel</li><li>Tek kullanımlık</li></ul>
+          <a class="btn btn-primary" href="panel.html#shop">Satın Al</a>
+        </article>
+        <article class="shop-card reveal">
+          <span class="shop-badge">BÜYÜK</span>
+          <h3>100.000 TL</h3>
+          <div class="price"><b>100</b> coin</div>
+          <ul><li>Anında kod</li><li>Hesabına özel</li><li>Tek kullanımlık</li></ul>
+          <a class="btn btn-secondary" href="panel.html#shop">Satın Al</a>
+        </article>
+      </div>
+      <p class="note reveal">Launcher hesabınla giriş yap. Ayrı kayıt yok — Minecraft adın ve şifren yeterli.</p>
+    </section>
+
+    <section class="section split download" id="indir">
+      <div class="split-copy reveal">
+        <span class="kicker">WINDOWS</span>
+        <h2>Tek tıkla <span class="grad">sunucuya gir</span></h2>
+        <p>ZeroxLauncher; Java, sürüm ve mod kurulumunu senin yerine yapar. OYNA'ya bas, sunucuya otomatik bağlan.</p>
+        <div class="download-meta">
+          <span>Windows 10/11</span><span>v1.4.7</span><span>~66 MB</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="download/ZeroxLauncher.exe" download>ZeroxLauncher.exe İndir <span>↓</span></a>
+        </div>
+        <p class="small">İndirme bağlantısı çalışmıyorsa siteyi sunucu üzerinden açtığından emin ol.</p>
+      </div>
+      <div class="launcher-mock reveal">
+        <div class="mock-bar"><span></span><span></span><span></span><em>ZeroxLauncher</em></div>
+        <div class="mock-body">
+          <div class="mock-logo">ZEROX<em>SMP</em></div>
+          <div class="mock-field">Oyuncu adı</div>
+          <div class="mock-field">Şifre</div>
+          <div class="mock-btn">OYNA</div>
+          <div class="mock-ping"><span class="dot"></span> 12 ms • oyna.zerox.com</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="android">
+      <div class="android-card reveal">
+        <div>
+          <span class="kicker">YAKINDA</span>
+          <h2>ZeroxSMP <span class="grad">Android</span></h2>
+          <p>Mobil sürüm hazırlanıyor. Çıktığında ilk sen haberdar ol — e-posta veya telefonunu bırak.</p>
+        </div>
+        <form class="waitlist" id="waitlistForm">
+          <input id="waitlistContact" type="text" placeholder="E-posta veya telefon" autocomplete="email" required>
+          <button class="btn btn-primary" type="submit">Beni Haberdar Et</button>
+          <p class="form-note" id="waitlistNote"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand">
+      <img src="assets/logo.svg" alt="" width="32" height="32">
+      <span>ZEROX<em>SMP</em></span>
+    </div>
+    <p>© 2026 ZeroxSMP. Mojang/Microsoft ile bağlantılı değildir.</p>
+    <div class="footer-links">
+      <a href="panel.html">Hesap</a>
+      <a href="#indir">Launcher</a>
+      <a href="#gorevler">Görevler</a>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="assets/config.js"></script>
+  <script src="assets/landing.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZeroxSMP Android — Yakında</title>
+  <link rel="stylesheet" href="assets/style.css?v=147f">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+</head>
+<body class="landing">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="aurora" aria-hidden="true"></div>
+  <header class="nav">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="38" height="38"><span>ZEROX<em>SMP</em></span></a>
+    <div class="nav-actions"><a class="btn btn-ghost" href="index.html">← Siteye Dön</a></div>
+  </header>
+  <main class="auth-wrap">
+    <div class="auth-card reveal">
+      <span class="kicker">ANDROID</span>
+      <h1 style="margin:9px 0 8px;font-size:38px;letter-spacing:-.04em">Mobil sürüm <span class="grad">yakında</span></h1>
+      <p style="color:var(--muted);margin:0 0 20px">ZeroxSMP Android uygulaması hazırlanıyor. E-posta veya telefonunu bırak, çıkınca ilk sen haberdar ol.</p>
+      <form class="waitlist" id="waitlistForm">
+        <input id="waitlistContact" type="text" placeholder="E-posta veya telefon" required>
+        <button class="btn btn-primary" type="submit">Beni Haberdar Et</button>
+        <p class="form-note" id="waitlistNote"></p>
+      </form>
+    </div>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="assets/config.js"></script>
+  <script src="assets/landing.js"></script>
+</body>
+</html>

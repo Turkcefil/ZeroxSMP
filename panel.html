@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b18">
+  <title>ZEROXSMP — Hesap Paneli</title>
+  <link rel="stylesheet" href="assets/style.css?v=147f">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <style>
+    /* Panelde landing.js yuklenmiyor; reveal animasyonu bekleyen kartlar
+       gorunmez kalmasin. Giris karti her zaman görünür olmali. */
+    .panel-page .reveal, .auth-card { opacity: 1 !important; transform: none !important; }
+  </style>
+</head>
+<body class="panel-page">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="aurora" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="" width="38" height="38">
+      <span>ZEROX<em>SMP</em></span>
+    </a>
+    <div class="nav-actions">
+      <a class="btn btn-ghost" href="index.html">← Siteye Dön</a>
+      <button class="btn btn-ghost hidden" id="logoutBtn" type="button">Çıkış</button>
+    </div>
+  </header>
+
+  <main class="panel-shell">
+    <section class="auth-wrap" id="authWrap">
+      <div class="auth-card">
+        <div class="auth-head">
+          <span class="kicker">HESAP</span>
+          <h1>ZeroxSMP <span class="grad">Giriş</span></h1>
+          <p>Launcher'da kullandığın Minecraft adı ve şifre ile giriş yap. Ayrı kayıt yok.</p>
+        </div>
+
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" data-tab="player" type="button">Oyuncu Girişi</button>
+          <button class="auth-tab" data-tab="admin" type="button">Admin Girişi</button>
+        </div>
+
+        <form id="loginForm" autocomplete="on">
+          <label class="field">
+            <span id="nameLabel">Minecraft Adı</span>
+            <input id="loginName" name="name" type="text" required maxlength="32" placeholder="OyuncuAdi" autocomplete="username">
+          </label>
+          <label class="field">
+            <span>Şifre</span>
+            <input id="loginPassword" name="password" type="password" required placeholder="••••••••" autocomplete="current-password">
+          </label>
+          <p class="form-error" id="loginError"></p>
+          <button class="btn btn-primary btn-block" type="submit" id="loginBtn">Giriş Yap</button>
+        </form>
+        <p class="auth-foot">Hesabın yok mu? Launcher'dan <b>Kayıt Ol</b> ile oluştur.</p>
+      </div>
+    </section>
+
+    <section class="dash hidden" id="dash">
+      <aside class="dash-side">
+        <div class="user-chip">
+          <div class="avatar" id="avatar">Z</div>
+          <div>
+            <strong id="userName">—</strong>
+            <span id="userRole">Oyuncu</span>
+          </div>
+        </div>
+        <nav class="dash-nav">
+          <button class="dash-link active" data-view="overview" type="button"><span>◈</span> Genel Bakış</button>
+          <button class="dash-link" data-view="redeem" type="button"><span>⌘</span> Görev Kodu</button>
+          <button class="dash-link" data-view="shop" type="button"><span>₺</span> Mağaza</button>
+          <button class="dash-link" data-view="inventory" type="button"><span>▣</span> Envanter</button>
+          <button class="dash-link admin-only hidden" data-view="admin" type="button"><span>★</span> Admin</button>
+        </nav>
+        <div class="side-foot">
+          <span class="dot"></span> oyna.zerox.com
+        </div>
+      </aside>
+
+      <div class="dash-main">
+        <section class="view" id="view-overview">
+          <div class="view-head">
+            <div>
+              <span class="kicker">HOŞ GELDİN</span>
+              <h2><span id="welcomeName">—</span>, panelin hazır.</h2>
+            </div>
+            <span class="pill"><span class="dot"></span> Aktif hesap</span>
+          </div>
+          <div class="stats">
+            <article class="stat-card">
+              <span>COIN</span>
+              <strong id="statCoins">0</strong>
+              <small>Site bakiyesi</small>
+            </article>
+            <article class="stat-card">
+              <span>TL</span>
+              <strong id="statTl">0 TL</strong>
+              <small>Oyun içi para</small>
+            </article>
+            <article class="stat-card">
+              <span>GÜNLÜK GÖREV</span>
+              <strong id="statEarned">0 / 80</strong>
+              <small>Kazanılan coin</small>
+            </article>
+            <article class="stat-card">
+              <span>HESAP</span>
+              <strong id="statStatus">Aktif</strong>
+              <small>ZeroxSMP</small>
+            </article>
+          </div>
+
+          <div class="panel-grid">
+            <article class="panel-card">
+              <h3>Hızlı İşlemler</h3>
+              <p>Görev kodunu gir, coin kazan. Coin'inle TL paketi al, kodunu sunucuda kullan.</p>
+              <div class="quick-actions">
+                <button class="btn btn-secondary" data-go="redeem" type="button">Görev Kodu Gir</button>
+                <button class="btn btn-primary" data-go="shop" type="button">Mağazaya Git</button>
+              </div>
+            </article>
+            <article class="panel-card">
+              <h3>Nasıl Çalışır?</h3>
+              <ol class="steps">
+                <li>Sunucuda <code>/gorevler</code> yaz.</li>
+                <li>Görevi tamamla, sohbetteki kodu kopyala.</li>
+                <li>Buradaki <b>Görev Kodu</b> alanına gir.</li>
+                <li>Coin'inle mağazadan TL paketi al.</li>
+                <li>Sunucuda <code>/code &lt;kod&gt;</code> yaz.</li>
+              </ol>
+            </article>
+          </div>
+        </section>
+
+        <section class="view hidden" id="view-redeem">
+          <div class="view-head">
+            <div><span class="kicker">GÖREV</span><h2>Görev kodunu kullan</h2></div>
+          </div>
+          <div class="panel-card narrow">
+            <p>Sohbette çıkan <b>ZX-XXXX-XXXX</b> formatındaki görev kodunu buraya yapıştır. Kod sadece senin hesabında geçerlidir.<br><b>TL-...</b> kodları buraya değil, oyunda <code>/code &lt;kod&gt;</code> ile kullanılır.</p>
+            <form id="redeemForm" class="inline-form">
+              <input id="redeemCode" type="text" placeholder="ZX-XXXX-XXXX" maxlength="32" autocomplete="off" required>
+              <button class="btn btn-primary" type="submit">Kodu Kullan</button>
+            </form>
+            <p class="form-note" id="redeemNote"></p>
+          </div>
+        </section>
+
+        <section class="view hidden" id="view-shop">
+          <div class="view-head">
+            <div><span class="kicker">MAĞAZA</span><h2>Coin'ini TL'ye çevir</h2></div>
+            <span class="pill">Bakiye: <b id="shopCoins">0</b> coin</span>
+          </div>
+          <div class="grid shop-grid">
+            <article class="shop-card" data-product="tl10k">
+              <span class="shop-badge">10.000 TL</span>
+              <h3>Başlangıç Paketi</h3>
+              <div class="price"><b>30</b> coin</div>
+              <ul><li>10.000 TL oyun içi para</li><li>Anında kod</li><li>Hesabına özel</li></ul>
+              <button class="btn btn-secondary buy-btn" type="button">Satın Al</button>
+            </article>
+            <article class="shop-card featured" data-product="tl30k">
+              <span class="shop-badge gold">30.000 TL</span>
+              <h3>Popüler Paket</h3>
+              <div class="price"><b>50</b> coin</div>
+              <ul><li>30.000 TL oyun içi para</li><li>Anında kod</li><li>Hesabına özel</li></ul>
+              <button class="btn btn-primary buy-btn" type="button">Satın Al</button>
+            </article>
+            <article class="shop-card" data-product="tl100k">
+              <span class="shop-badge">100.000 TL</span>
+              <h3>Büyük Paket</h3>
+              <div class="price"><b>100</b> coin</div>
+              <ul><li>100.000 TL oyun içi para</li><li>Anında kod</li><li>Hesabına özel</li></ul>
+              <button class="btn btn-secondary buy-btn" type="button">Satın Al</button>
+            </article>
+          </div>
+          <p class="note">Satın alma sonrası kod anında oluşur ve envanterine eklenir. Sunucuda <code>/code &lt;kod&gt;</code> yazarak parayı al.</p>
+        </section>
+
+        <section class="view hidden" id="view-inventory">
+          <div class="view-head">
+            <div><span class="kicker">ENVANTER</span><h2>Satın aldıkların</h2></div>
+            <button class="btn btn-ghost" id="refreshInventory" type="button">Yenile</button>
+          </div>
+          <div class="inventory-list" id="inventoryList">
+            <div class="empty">Henüz bir satın alma yok.</div>
+          </div>
+          <p class="note">Kodu kopyaladıktan sonra sunucuda <code>/code &lt;kod&gt;</code> yaz. Kod hesabına özeldir ve yalnızca bir kez kullanılabilir.</p>
+        </section>
+
+        <section class="view hidden" id="view-admin">
+          <div class="view-head">
+            <div><span class="kicker">YÖNETİM</span><h2>Admin paneli</h2></div>
+            <span class="pill gold">Yönetici</span>
+          </div>
+          <div class="stats">
+            <article class="stat-card"><span>KULLANICI</span><strong id="adminUsers">0</strong><small>Kayıtlı hesap</small></article>
+            <article class="stat-card"><span>TOPLAM COIN</span><strong id="adminCoins">0</strong><small>Dağıtılan</small></article>
+            <article class="stat-card"><span>KOD</span><strong id="adminCodes">0</strong><small>Satın alma kodu</small></article>
+            <article class="stat-card"><span>BEKLEME</span><strong id="adminWaitlist">0</strong><small>Android listesi</small></article>
+          </div>
+          <div class="panel-card">
+            <h3>Coin Ver</h3>
+            <form id="grantForm" class="inline-form">
+              <input id="grantName" type="text" placeholder="Oyuncu adı" required>
+              <input id="grantCoins" type="number" placeholder="Coin" min="1" max="1000000" required>
+              <button class="btn btn-primary" type="submit">Gönder</button>
+            </form>
+            <p class="form-note" id="grantNote"></p>
+          </div>
+          <div class="panel-card">
+            <h3>Kullanıcılar</h3>
+            <div class="table-wrap">
+              <table class="user-table">
+                <thead><tr><th>Oyuncu</th><th>Coin</th><th>Bugün</th><th>Oyun TL</th></tr></thead>
+                <tbody id="adminUserRows"><tr><td colspan="4" class="empty">Yükleniyor…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal hidden" id="buyModal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <span class="kicker">ÖDEME</span>
+      <h3 id="modalTitle">Satın alımı onayla</h3>
+      <p id="modalText"></p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="modalCancel" type="button">Vazgeç</button>
+        <button class="btn btn-primary" id="modalConfirm" type="button">Onayla</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/panel.js?v=147f"></script>
+</body>
+</html>
